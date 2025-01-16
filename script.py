@@ -4,7 +4,7 @@ import keyboard
 import time
 
 # Set up OpenAI API key
-OPENAI_API_KEY = "key"  # Replace with your actual API key
+OPENAI_API_KEY = "gettin soon"  # Replace with your actual API key
 openai.api_key = OPENAI_API_KEY
 
 def query_chatgpt(prompt):
