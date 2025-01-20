@@ -12,14 +12,14 @@ openai.api_key = OPENAI_API_KEY
 user_key = "uyboyw61am8bhvchius7efswdcsd48"
 api_token = "ajf2vh6aeouiowpiknbeccuwi1uemd"
 
-notification_delay = 0.1
-number_delay = 5
+notification_delay = 0.5
+number_delay = 3
 
 def query_chatgpt(prompt):
     """Send a prompt to ChatGPT and receive a response."""
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",  # Use "gpt-4" if you have access
+            model="gpt-4",  # Use "gpt-4" if you have access
             messages=[{"role": "user", "content": prompt}],
             max_tokens=100,  # Adjust based on your needs
             temperature=0.7  # Controls creativity
@@ -63,6 +63,7 @@ def process_question_with_notifications():
         question_prompt = (
             f"In the following multiple-choice question, identify only the number(s) of the correct answer: {prompt}. "
             f"Respond with just the number(s), separated by commas if there are multiple."
+            f"if number one is right, give back 1. if number 3 then 3."
         )
         print("Sending question to ChatGPT...")
         response = query_chatgpt(question_prompt)
@@ -78,8 +79,8 @@ def process_question_with_notifications():
             numbers = [int(num.strip()) for num in response.split(",") if num.strip().isdigit()]
             for number in numbers:
                 for i in range(number):
-                    send_push_notification(".", f"num {i + 1}")
-                    print(f"Sent notification {i + 1}")
+                    send_push_notification("num", f"{i + 1}/{number}")
+                    print(f"num {i + 1}/{number}")
                     time.sleep(notification_delay)  # Delay between individual notifications
                 time.sleep(number_delay)  # Delay between different answer numbers
     else:

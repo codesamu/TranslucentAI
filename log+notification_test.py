@@ -61,13 +61,14 @@ def process_question_with_notifications():
             numbers = [int(num.strip()) for num in response.split(",") if num.strip().isdigit()]
             for number in numbers:
                 for i in range(number):
-                    send_push_notification("Test Notification", f"Notification {i + 1}")
-                    print(f"Sent notification {i + 1}")
+                    send_push_notification("num", f"{i + 1}/{number}")
+                    print(f"num {i + 1}/{number}")
                     time.sleep(notification_delay)  # Delay between individual notifications
                 time.sleep(number_delay)  # Delay between different answer numbers
 
     else:
         print("Clipboard is empty.")
+
 
 # Set up hotkey listeners
 keyboard.add_hotkey("ctrl+alt+s", process_clipboard)  # First hotkey
