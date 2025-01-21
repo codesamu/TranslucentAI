@@ -36,6 +36,7 @@ def send_push_notification(title, message):
             "user": user_key,
             "title": title,
             "message": message,
+            "device": "iphone"
         }
         response = requests.post("https://api.pushover.net/1/messages.json", data=push_message)
         print("Push notification sent:", response.json())
