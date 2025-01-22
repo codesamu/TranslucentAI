@@ -13,7 +13,7 @@ user_key = "uyboyw61am8bhvchius7efswdcsd48"
 api_token = "ajf2vh6aeouiowpiknbeccuwi1uemd"
 
 notification_delay = 0.5
-number_delay = 3
+number_delay = 3    
 
 def query_chatgpt(prompt):
     """Send a prompt to ChatGPT and receive a response."""
