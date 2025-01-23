@@ -12,8 +12,8 @@ openai.api_key = OPENAI_API_KEY
 user_key = "uyboyw61am8bhvchius7efswdcsd48"
 api_token = "ajf2vh6aeouiowpiknbeccuwi1uemd"
 
-notification_delay = 0.5
-number_delay = 3    
+notification_delay = 1
+number_delay = 4
 
 def query_chatgpt(prompt):
     """Send a prompt to ChatGPT and receive a response."""
@@ -21,7 +21,7 @@ def query_chatgpt(prompt):
         response = openai.ChatCompletion.create(
             model="gpt-4",  # Use "gpt-4" if you have access
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=100,  # Adjust based on your needs
+            max_tokens=1000,  # Adjust based on your needs
             temperature=0.7  # Controls creativity
         )
         return response['choices'][0]['message']['content'].strip()
