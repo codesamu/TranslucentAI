@@ -1,16 +1,17 @@
-import bluetooth
+from bleak import BleakClient
 
-# Define the target device's MAC address and port
-address = "XX:XX:XX:XX:XX:XX"  # Replace with the ESP32-C6 Bluetooth device's MAC address
-port = 1
+# BLE address of the ESP32-C6 (replace with your device's address)
+esp32_address = "XX:XX:XX:XX:XX:XX"
+characteristic_uuid = "abcd1234-5678-1234-5678-123456789abc"  # Match UUID in ESP32 code
 
-# Create a Bluetooth socket and connect
-sock = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-sock.connect((address, port))
+async def send_text(text):
+    async with BleakClient(esp32_address) as client:
+        if client.is_connected:
+            print(f"Connected to {esp32_address}")
+            await client.write_gatt_char(characteristic_uuid, text.encode('utf-8'))
+            print(f"Sent: {text}")
 
-# Sending data
-data_to_send = "Hello ESP32-C6 via Bluetooth"
-sock.send(data_to_send)
-
-# Close the socket
-sock.close()
+# Example usage
+import asyncio
+text = input("Enter text to send: ")
+asyncio.run(send_text(text))
