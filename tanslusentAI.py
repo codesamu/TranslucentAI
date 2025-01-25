@@ -71,6 +71,19 @@ def query_chatgpt(prompt):
         return response['choices'][0]['message']['content'].strip()
     except Exception as e:
         return f"Error: {e}"
+    
+def process_clipboard():
+    """Fetch text from clipboard and type the response from ChatGPT."""
+    prompt = pyperclip.paste()
+    if prompt:
+        print("Sending clipboard text to ChatGPT...")
+        response = query_chatgpt(prompt)
+        print("Response received. Typing back...")
+        for char in response:
+            keyboard.write(char)
+            time.sleep(0.01)  # Simulate typing speed
+    else:
+        print("Clipboard is empty.")
 
 def send_push_notification(title, message):
     """Send a push notification using Pushover."""
