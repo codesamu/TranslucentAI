@@ -55,7 +55,7 @@ class TransparentWindow(QMainWindow):
     def update_label(self, text):
         """Update the label text in the window."""
         # Ensure label updates happen on the main UI thread
-        QTimer.singleShot(0, lambda: self.label.setText(text))
+        self.label.setText(text)
         QApplication.processEvents()  # Force UI update
 
 

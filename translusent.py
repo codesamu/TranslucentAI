@@ -23,6 +23,7 @@ class TransparentWindow(QMainWindow):
         label.setStyleSheet(f"font-size: 24px; color: {text_color}; background: transparent;")
         label.setAlignment(Qt.AlignCenter)
         self.setCentralWidget(label)
+        
 
     def showEvent(self, event):
         # Prevent the window from taking focus when shown
