@@ -36,7 +36,7 @@ class TransparentWindow(QMainWindow):
         self.setAttribute(Qt.WA_TranslucentBackground)
 
         # Add a label with text
-        self.label = QLabel("text", self)
+        self.label = QLabel("AI", self)
         self.label.setStyleSheet(f"font-size: 24px; color: {text_color}; background: transparent;")
         self.label.setAlignment(Qt.AlignCenter)
         self.setCentralWidget(self.label)
@@ -131,18 +131,11 @@ def process_question_with_notifications():
     else:
         print("Clipboard is empty.")
 
-def test_label_update():
-    """Test updating the label with a simple string."""
-    window.update_label("Hello, World!")
-    QApplication.processEvents()  # Force UI update
-
-
 def process_question_and_show_number():
     """Ask ChatGPT to identify the correct numbers and update the window without sending notifications."""
     def _process():
         prompt = pyperclip.paste()
         if prompt:
-            print("Clipboard content:", prompt)  # Debug print
             # Ask ChatGPT to only return the numbers
             question_prompt = (
                 f"In the following multiple-choice question, identify only the number(s) of the correct answer: {prompt}. "
@@ -161,7 +154,7 @@ def process_question_and_show_number():
             # Update the window label with the right number(s)
             if numbers:
                 print("Updating label with numbers:", numbers)  # Debug print
-                window.update_label("Correct number(s): " + ", ".join(numbers))
+                window.update_label("" + ", ".join(numbers))
             else:
                 print("No correct numbers identified.")  # Debug print
                 window.update_label("No correct numbers identified.")
@@ -177,7 +170,6 @@ def setup_hotkeys():
     keyboard.add_hotkey("ctrl+alt+s", process_clipboard)  # First hotkey
     keyboard.add_hotkey("ctrl+alt+a", process_question_with_notifications)  # Second hotkey
     keyboard.add_hotkey("ctrl+alt+d", process_question_and_show_number)  # New hotkey to show the correct number(s) in window
-    keyboard.add_hotkey("ctrl+alt+t", test_label_update)  # Test hotkey
 
 def run_event_loop():
     """Ensure the event loop keeps running and doesn't block."""
