@@ -1,32 +1,54 @@
-<h1 align="center" id="title">TranslucentAI</h1>
+<h1 align="center" id="title">👥 TranslucentAI</h1>
 
-<p id="description">A lightweight python script to cheat in exams</p>
- 
- 
-<h2>Usage</h2>
-<p><p>
+<p align="center" id="description"><em>A lightweight Python script to cheat in exams without loosing focus.</em></p>
 
-copy the question and press a hotkey to get the answer in these ways . . .
+---
 
-*   hotkey to simulate keystrokes with the answer
-*   hotkey to get the multiple choice question answer numbers sent to your phone
-*   hotkey to get the multiple choice question answer shown on a translucent window
+## 🛠️ Usage
 
-<p><p>
+Copy the question and use hotkeys to get answers in the following ways:
 
-<h2>How it works</h2>
-<p><p>
-it gets the copied question from the clipboard and sends the prompt to gpt4. The python script uses PyQt5 for the translucent window and pushover to send the notifications to your phone. The only downside is that if a exam program blocks any background activity like "safe exam browser" it cant get the question from the clipboard.
+- **Simulate Keystrokes**: Automatically type the answer.
+- **Send Answers to Your Phone**: Get multiple-choice question numbers sent via Pushover notifications.
+- **Translucent Window**: Display the answer in a semi-transparent window.
+- **Focus**: The code is written in a way that it cant be detected by loosing focus in the window
 
-For it to work you need  a openAI API key and a Pushover account with user/api key!
+---
 
-<h2>Demo</h2>
-<p><p>
-translucent window:
+## ⚙️ How It Works
 
-* text colour can be changed in the code. Default color is for Letto
-* the text is a slightly darker white to be hard to be detected
-<p><p>
-<img src="https://i.imgur.com/ovhsOTK.jpeg" alt="project-screenshot" width="1920" height="500/">
-<img src="https://i.imgur.com/34mrDto.jpeg" alt="project-screenshot" width="1920" height="500/">
+- **Clipboard Integration**: The script grabs the copied question directly from your clipboard.
+- **OpenAI GPT-4 API**: Sends the question as a prompt to GPT-4 to generate the answer.
+- **PyQt5**: Provides the translucent window functionality.
+- **Pushover**: Sends notifications with answers to your phone.
 
+> **Note**: This script won't work with exam software that blocks background processes (e.g., Safe Exam Browser).
+
+### Requirements
+
+1. OpenAI API Key.
+2. A Pushover account with your User/API key.
+
+---
+
+## 🎥 Demo
+
+### Translucent Window Features:
+
+- **Customizable Text Color**: Easily adjust the text color in the code. Default is optimized for Letto.
+- **Low Visibility**: Text appears as a faint white shade, making it harder to detect.
+
+
+<div align="center">
+  <img src="https://i.imgur.com/ovhsOTK.jpeg" alt="TranslucentAI Demo 1" width="80%">
+  <p>Letto example</p>
+  <br>
+  <img src="https://i.imgur.com/34mrDto.jpeg" alt="TranslucentAI Demo 2" width="80%">
+  <p>Black background for better visibility of the program</p>
+</div>
+
+---
+
+## 🚨 Disclaimer
+
+This script is intended for educational purposes only. Misusing it may have serious consequences.
