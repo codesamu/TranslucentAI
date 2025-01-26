@@ -49,6 +49,29 @@ Copy the question and use hotkeys to get answers in the following ways:
 
 ---
 
+## 📦Packages
+
+```bash
+pip install pyqt5
+```
+```bash
+pip install openai==0.28
+```
+```bash
+pip install keyboard
+```
+```bash
+pip install requests
+```
+```bash
+pip install threading
+```
+```bash
+pip install pyperclip
+```
+
+---
+
 ## 🚨 Disclaimer
 
 This script is intended for educational purposes only. Misusing it may have serious consequences.
