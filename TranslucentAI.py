@@ -94,10 +94,38 @@ def process_question_and_show_number():
 
     threading.Thread(target=_process, daemon=True).start()
 
+def process_question_and_show_answer():
+    """Ask ChatGPT to identify the correct numbers and update the window without sending notifications."""
+    def _process():
+        prompt = pyperclip.paste()
+        if prompt:
+            question_prompt = (
+                f"In the following question, identify only the number of the answer: {prompt}. "
+                f"Respond with just the number(s), separated by commas if there are multiple."
+            )
+            print("sending...")
+            response = query_chatgpt(question_prompt)
+            print("received: ", response)
+
+            numbers = response.split(",")
+            numbers = [num.strip() for num in numbers if num.strip().isdigit()]
+
+            if numbers:
+                window.update_label("" + ", ".join(numbers))
+            else:
+                print("error: no numbers were given")
+                window.update_label("error")
+        else:
+            print("Clipboard is empty.")
+            window.update_label("Clipboard is empty.")
+
+    threading.Thread(target=_process, daemon=True).start()
+
 def setup_hotkeys():
     """Set up hotkeys for various actions."""
     keyboard.add_hotkey("ctrl+alt+s", process_clipboard)
     keyboard.add_hotkey("ctrl+alt+d", process_question_and_show_number)
+    keyboard.add_hotkey("ctrl+alt+f", process_question_and_show_answer)
 
 def run_event_loop():
     """Ensure the event loop keeps running and doesn't block."""
@@ -121,6 +149,7 @@ if __name__ == "__main__":
     setup_hotkeys()
     print(" - Ctrl+Alt+S: simulate keyboard-strokes")
     print(" - Ctrl+Alt+D: show number on screen")
+    print(" - Ctrl+Alt+F: show answer on screen")
     print("esc -> stop")
 
     run_event_loop()
