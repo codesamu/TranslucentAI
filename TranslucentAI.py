@@ -57,8 +57,11 @@ def process_clipboard():
     """Fetch text from clipboard and type the response from ChatGPT."""
     prompt = pyperclip.paste()
     if prompt:
+        question_prompt = {
+            f'answer the following question with a sentence (10-20 Words) like a student: {prompt}'
+        }
         print("sending...")
-        response = query_chatgpt(prompt)
+        response = query_chatgpt(question_prompt)
         print("received")
         for char in response:
             keyboard.write(char)
