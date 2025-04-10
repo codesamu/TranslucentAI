@@ -46,7 +46,7 @@ def query_chatgpt(prompt):
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=10000,
+            max_tokens=8000,
             temperature=0.7  # Controls creativity
         )
         return response['choices'][0]['message']['content'].strip()
@@ -98,25 +98,28 @@ def process_question_and_show_number():
     threading.Thread(target=_process, daemon=True).start()
 
 def process_question_and_show_answer():
-    """Ask ChatGPT to identify the correct numbers and update the window without sending notifications."""
+    """Ask ChatGPT to solve equations or questions and show the answer(s) in the window."""
     def _process():
         prompt = pyperclip.paste()
         if prompt:
             question_prompt = (
-                f"In the following question, identify only the number of the answer: {prompt}. "
-                f"Respond with just the number(s), separated by commas if there are multiple."
+                f"Answer the following question or solve the equation: {prompt}. "
+                f"If it's a math problem, give only the numerical answer(s). "
+                f"If it's a general question, give a concise answer. "
+                f"For multiple answers, separate them with commas."
             )
             print("sending...")
             response = query_chatgpt(question_prompt)
             print("received: ", response)
 
-            numbers = response.split(",")
-            numbers = [num.strip() for num in numbers if num.strip().isdigit()]
-
-            if numbers:
-                window.update_label("" + ", ".join(numbers))
+            # Clean up the response to ensure it's comma-separated
+            answers = response.split(",")
+            answers = [ans.strip() for ans in answers if ans.strip()]
+            
+            if answers:
+                window.update_label(", ".join(answers))
             else:
-                print("error: no numbers were given")
+                print("error: no answer was given")
                 window.update_label("error")
         else:
             print("Clipboard is empty.")
