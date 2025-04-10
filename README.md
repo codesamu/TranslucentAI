@@ -28,6 +28,15 @@ Copy the question and use hotkeys to get answers in the following ways:
 
 1. OpenAI API Key.
 2. A Pushover account with your User/API key.
+3. Python 3.7 or higher
+
+### Installation
+
+To install all required packages, run:
+
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
