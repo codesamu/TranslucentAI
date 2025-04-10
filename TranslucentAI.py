@@ -46,7 +46,7 @@ def query_chatgpt(prompt):
         response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=1000,
+            max_tokens=10000,
             temperature=0.7  # Controls creativity
         )
         return response['choices'][0]['message']['content'].strip()
