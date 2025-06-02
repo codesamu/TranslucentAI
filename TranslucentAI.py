@@ -114,10 +114,25 @@ def process_question_and_show_answer():
 
             # Clean up the response to ensure it's comma-separated
             answers = response.split(",")
-            answers = [ans.strip() for ans in answers if ans.strip()]
+            cleaned_answers = []
             
-            if answers:
-                window.update_label(", ".join(answers))
+            for ans in answers:
+                ans = ans.strip()
+                # Try to convert to float if it's a number
+                try:
+                    num = float(ans)
+                    # If it's a whole number, convert to int
+                    if num.is_integer():
+                        cleaned_answers.append(str(int(num)))
+                    else:
+                        cleaned_answers.append(str(num))
+                except ValueError:
+                    # If it's not a number, keep the original text
+                    if ans:
+                        cleaned_answers.append(ans)
+            
+            if cleaned_answers:
+                window.update_label(", ".join(cleaned_answers))
             else:
                 print("error: no answer was given")
                 window.update_label("error")
