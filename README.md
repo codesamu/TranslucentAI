@@ -6,7 +6,7 @@
 
 ## 🛠️ Usage
 
-Copy the question and use hotkeys to get answers in the following ways:
+Copy a question and use hotkeys to get answers in the following ways:
 
 - **Simulate Keystrokes**: Automatically type the answer.
 - **Send Answers to Your Phone**: Get multiple-choice question numbers sent via Pushover notifications.
