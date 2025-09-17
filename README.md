@@ -84,3 +84,18 @@ pip install pyperclip
 ## 🚨 Disclaimer
 
 This script is intended for educational purposes only. Misusing it may have serious consequences.
+
+## Environment setup
+
+Create a `.env` file in the project root with your API key:
+
+```
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+The `.env` file is ignored by git. Install dependencies and run:
+
+```
+pip install -r requirements.txt
+python TranslucentAI.py
+```

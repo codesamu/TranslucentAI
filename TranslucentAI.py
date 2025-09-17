@@ -6,8 +6,11 @@ import pyperclip
 import keyboard
 import time
 import threading
+import os
+from dotenv import load_dotenv
 
-OPENAI_API_KEY = "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"  # Replace with your actual API key
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 openai.api_key = OPENAI_API_KEY
 
 class TransparentWindow(QMainWindow):
