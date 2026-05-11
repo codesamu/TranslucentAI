@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const analyzeBtn = document.getElementById('analyzeBtn');
   const output = document.getElementById('output');
   const resultContainer = document.getElementById('resultContainer');
-  const loader = document.getElementById('loader');
-  const btnText = document.querySelector('.btn-text');
+
+
 
   // Load saved API key
   const stored = await chrome.storage.local.get(['openrouter_api_key']);
@@ -28,21 +28,22 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // UI Feedback
     analyzeBtn.disabled = true;
-    loader.style.display = 'block';
-    btnText.style.opacity = '0.5';
     resultContainer.classList.remove('hidden');
     output.textContent = 'Extracting page content...';
+    // UI feedback simplified (no loader or btnText)
 
     try {
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
       const response = await chrome.tabs.sendMessage(tab.id, { action: "getContent" });
       const pageContent = response.content;
 
-      // Show scraped content in debug field
+      // Show scraped content in debug field if present
       const debugContainer = document.getElementById('debugContainer');
       const scrapedContentDiv = document.getElementById('scrapedContent');
-      debugContainer.classList.remove('hidden');
-      scrapedContentDiv.textContent = pageContent || 'No content found.';
+      if (debugContainer && scrapedContentDiv) {
+        debugContainer.classList.remove('hidden');
+        scrapedContentDiv.textContent = pageContent || 'No content found.';
+      }
 
       if (!pageContent) throw new Error('Could not extract content.');
 
@@ -75,8 +76,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       output.textContent = `Error: ${error.message}`;
     } finally {
       analyzeBtn.disabled = false;
-      loader.style.display = 'none';
-      btnText.style.opacity = '1';
+  
+  
     }
   });
 
