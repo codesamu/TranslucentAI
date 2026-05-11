@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Translucent AI</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Translucent AI</h1>
+      <p class="subtitle">OpenRouter Page Analyzer</p>
+    </header>
+
+    <div class="glass-card">
+      <div class="input-group">
+        <label for="apiKey">OpenRouter API Key</label>
+        <input type="password" id="apiKey" placeholder="sk-or-v1-...">
+      </div>
+
+
+      <div class="actions">
+        <button id="analyzeBtn" class="primary-btn">
+          <span class="btn-text">Analyze Page</span>
+          <div class="loader" id="loader"></div>
+        </button>
+        <button id="testBtn" class="secondary-btn">Test Connection</button>
+      </div>
+    </div>
+
+    <div id="resultContainer" class="glass-card hidden">
+      <label>Answer</label>
+      <div id="output" class="output-text"></div>
+    </div>
+
+    <div id="debugContainer" class="glass-card hidden">
+      <label>Debug: Scraped Content</label>
+      <div id="scrapedContent" class="output-text debug-text"></div>
+    </div>
+
+    <footer>
+      <p>Powered by OpenRouter Free Models</p>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
