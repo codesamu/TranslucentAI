@@ -1,101 +1,71 @@
 <h1 align="center" id="title">👥 TranslucentAI</h1>
 
-<p align="center" id="description"><em>A lightweight Python script to cheat in exams without loosing focus.</em></p>
+<p align="center" id="description"><em>An invisible AI assistant for web pages and exams, featuring a browser extension and a desktop script.</em></p>
 
 ---
 
-## 🛠️ Usage
+## 🚀 Two Powerful Tools
 
-Copy a question and use hotkeys to get answers in the following ways:
+TranslucentAI comes in two flavors depending on your needs:
 
+1. **Browser Extension (Main Feature)**: Seamlessly analyze web pages right from your browser using OpenRouter's free AI models.
+2. **Desktop Script (PyQt)**: A lightweight Python script to get answers via hotkeys without losing window focus.
+
+---
+
+## 🧩 1. Browser Extension (Main)
+
+A stealthy Firefox extension that analyzes multiple-choice questions on web pages and returns the correct answers in a compact, unobtrusive UI.
+
+### ✨ Features
+- **Compact UI**: Designed to be minimal and blend into white pages so it's less easy to spot.
+- **OpenRouter Integration**: Uses powerful open-source models (e.g., Llama 3) for free.
+- **Stealth Mode**: Designed to be as invisible as possible during usage.
+
+### 🛠️ Installation
+1. Clone this repository.
+2. Open Firefox and navigate to `about:debugging#/runtime/this-firefox`.
+3. Click **Load Temporary Add-on...**
+4. Select the `manifest.json` file inside the `openrouter-extension` folder.
+
+### ⚙️ Usage
+1. Click the extension icon.
+2. Enter your OpenRouter API Key.
+3. Click **Analyze** to automatically grab page content and get the correct answers.
+
+---
+
+## 💻 2. Desktop Script (PyQt)
+
+A background Python script that monitors your clipboard. Copy a question, press a hotkey, and get the answer displayed in a translucent, nearly invisible window or sent to your phone.
+
+### ✨ Features
 - **Simulate Keystrokes**: Automatically type the answer.
-- **Send Answers to Your Phone**: Get multiple-choice question numbers sent via Pushover notifications.
-- **Translucent Window**: Display the answer in a semi-transparent window.
-- **Focus**: The code is written in a way that it cant be detected by loosing focus in the window
+- **Translucent Window (PyQt5)**: Displays the answer in a faint, semi-transparent window overlay using PyQt.
+- **Pushover Support**: Sends answers directly to your phone via notifications.
+- **Undetectable Focus**: Designed to avoid triggering "lost focus" alerts in most standard software.
 
----
+### 🛠️ Installation & Setup
+1. Ensure Python 3.7+ is installed.
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Create a `.env` file in the project root with your OpenAI API key (or other supported keys):
+   ```env
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
 
-## ⚙️ How It Works
-
-- **Clipboard Integration**: The script grabs the copied question directly from your clipboard.
-- **OpenAI GPT-4 API**: Sends the question as a prompt to GPT-4 to generate the answer.
-- **PyQt5**: Provides the translucent window functionality.
-- **Pushover**: Sends notifications with answers to your phone.
-
-> **Note**: This script won't work with exam software that blocks background processes (e.g., Safe Exam Browser).
-
-### Requirements
-
-1. OpenAI API Key.
-2. A Pushover account with your User/API key.
-3. Python 3.7 or higher
-
-### Installation
-
-To install all required packages, run:
-
+### ⚙️ Usage
+Run the script from your terminal:
 ```bash
-pip install -r requirements.txt
+python TranslucentAI.py
 ```
 
----
-
-## 🎥 Demo
-
-### Translucent Window Features:
-
-- **Customizable Text Color**: Easily adjust the text color in the code. Default is optimized for Letto.
-- **Low Visibility**: Text appears as a faint white shade, making it harder to detect.
-
-
-<div align="center">
-  <img src="https://i.imgur.com/ovhsOTK.jpeg" alt="TranslucentAI Demo 1" width="80%">
-  <p>Letto example</p>
-  <br>
-  <img src="https://i.imgur.com/34mrDto.jpeg" alt="TranslucentAI Demo 2" width="80%">
-  <p>Black background for better visibility of the program</p>
-</div>
-
----
-
-## 📦Packages
-
-```bash
-pip install pyqt5
-```
-```bash
-pip install openai==0.28
-```
-```bash
-pip install keyboard
-```
-```bash
-pip install requests
-```
-```bash
-pip install threading
-```
-```bash
-pip install pyperclip
-```
+> **Note**: This script won't work with exam software that completely blocks background processes (e.g., Safe Exam Browser).
 
 ---
 
 ## 🚨 Disclaimer
 
-This script is intended for educational purposes only. Misusing it may have serious consequences.
-
-## Environment setup
-
-Create a `.env` file in the project root with your API key:
-
-```
-OPENAI_API_KEY=your_openai_api_key_here
-```
-
-The `.env` file is ignored by git. Install dependencies and run:
-
-```
-pip install -r requirements.txt
-python TranslucentAI.py
-```
+This software is intended for educational and testing purposes only. Misusing it may have serious consequences.
