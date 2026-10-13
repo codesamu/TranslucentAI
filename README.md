@@ -62,7 +62,36 @@ Run the script from your terminal:
 python TranslucentAI.py
 ```
 
+The app uses OpenRouter's `openrouter/free` router, which automatically selects
+an available free model. You can override it with a comma-separated
+`OPENROUTER_MODELS` value in `.env` if needed.
+
 > **Note**: This script won't work with exam software that completely blocks background processes (e.g., Safe Exam Browser).
+
+## 🍎 3. macOS PyQt v3 (OpenRouter Free)
+
+`macos_v3/` is the third desktop version. It keeps the translucent PyQt overlay
+from the original version but uses OpenRouter's free models with automatic
+fallbacks. Copy `.env.example` to `.env`, add an OpenRouter API key, then run:
+
+```bash
+cd macos_v3
+python3 -m venv .venv && source .venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt
+python TranslucentAI.py
+```
+
+The overlay starts as a readable dark panel near the top-left of the primary
+screen. Left-drag the text or loading circle independently, right-click either
+one or press `Ctrl+Alt+M` for settings, and adjust their separate opacity and
+exact positions there. Enable
+“Show overlay on every macOS Space” if you use multiple workspaces; the
+setting is remembered with macOS preferences.
+
+Run its offline tests with `python -m unittest -v test_translucent_ai.py` from
+the `macos_v3` directory. The app does not contain API keys; macOS may also
+require Accessibility permission for global hotkeys and typing.
 
 ---
 

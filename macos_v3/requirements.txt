@@ -1,0 +1,9 @@
+PyQt5==5.15.11
+pynput==1.7.6
+pyobjc-framework-ApplicationServices==11.1
+pyobjc-framework-Cocoa==11.1
+pyobjc-framework-CoreText==11.1
+pyobjc-framework-Quartz==11.1
+pyperclip==1.8.2
+python-dotenv==1.0.1
+requests==2.31.0

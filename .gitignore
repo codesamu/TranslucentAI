@@ -2,3 +2,7 @@
 .env.*
 *.env
 .envrc 
+
+# Python virtual environments
+venv/
+.venv/
